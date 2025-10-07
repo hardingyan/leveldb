@@ -393,6 +393,7 @@ if(LEVELDB_BUILD_TESTS)
   endfunction(leveldb_test)
 
   leveldb_test("db/c_test.c")
+  leveldb_test("tests/hello.cc")
 
   if(NOT BUILD_SHARED_LIBS)
     # TODO(costan): This test also uses
@@ -440,6 +441,10 @@ if(LEVELDB_BUILD_BENCHMARKS)
 
   if(NOT BUILD_SHARED_LIBS)
     leveldb_benchmark("benchmarks/db_bench.cc")
+  endif(NOT BUILD_SHARED_LIBS)
+
+  if(NOT BUILD_SHARED_LIBS)
+    leveldb_benchmark("benchmarks/db_bench_log.cc")
   endif(NOT BUILD_SHARED_LIBS)
 
   check_library_exists(sqlite3 sqlite3_open "" HAVE_SQLITE3)
